@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{recipe[0]["name"]}}
+{% endblock %}
+
+{% block main %}
+
+<div id="heading">{{recipe[0]["name"]}}</div>
+
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div> 
+
+<form action="/edit/{{recipe[0]['id']}}" method="post">
+    <div class="contribute">
+        <strong><label for="recipe_name" class="form-label">Name:</label></strong>
+        <input autocomplete="off" autofocus class="form-control mx-auto" id="recipe_name" name="recipe_name" type="text" value="{{recipe[0]['name']}}">
+    </div>
+    <div class="contribute">
+        <strong><label for="recipe_descrip" class="form-label">Description:</label></strong>
+        <textarea autocomplete="off" autofocus class="form-control mx-auto" id="recipe_descrip" name="recipe_descrip" type="text">{{recipe[0]['description']}}</textarea>
+    </div>
+    <div class="contribute">
+        <strong><label for="recipe_ingre" class="form-label">Ingredients:</label></strong>
+        <p>Separate each ingredient by a comma</p>
+        <textarea autocomplete="off" autofocus class="form-control mx-auto" id="recipe_ingre" name="recipe_ingre" type="text">{{recipe[0]['ingredients']}}</textarea>
+    </div>
+    <div class="contribute">
+        <strong><label for="recipe_steps" class="form-label">Steps:</label></strong>
+        <p>Separate each step by a comma</p>
+        <textarea autocomplete="off" autofocus class="form-control mx-auto" id="recipe_steps" name="recipe_steps" type="text">{{recipe[0]['steps']}}</textarea>
+    </div>
+    <div class="login">
+    <button class="btn btn-primary edit" type="submit">Save</button>
+    </div>
+</form>
+{% endblock %}
+

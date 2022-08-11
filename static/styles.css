@@ -1,0 +1,75 @@
+#heading {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.75em;
+    background-color: beige;
+    margin-bottom: 1em;
+}
+
+footer {
+    margin-top: 2em;
+    padding: 0.5em;
+    border-top: lightgray solid 0.1em;
+}
+
+p{
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.subm {
+    text-align: center;
+    color: lightslategray;
+}
+
+.random {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-bottom: 2em;
+}
+
+.mb-3 {
+    max-width: 30em;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    margin-bottom: 2rem!important;
+}
+
+#recipe {
+    margin-top: 2em;
+}
+
+#nav {
+    text-decoration: none;
+    color: black;
+}
+
+.login {
+    text-align: center;
+}
+
+.input-group {
+    align-items: flex-end;
+}
+
+#search {
+    margin-bottom: 0rem!important;
+}
+
+.contribute{
+    max-width: 50em;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    margin-bottom: 2rem!important;
+}
+
+
+

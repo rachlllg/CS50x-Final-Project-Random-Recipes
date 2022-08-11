@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<div id="heading">{{ recipe[0]["name"] }}</div>
+
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div> 
+
+{% if session["user_id"] %}
+<form action="/recipe/{{recipe[0]['id']}}" method="post">
+    <div class="login">
+      <input type="hidden" name="favorites" value="favorites">
+      <button class="btn btn-outline-primary" type="submit" id="button-addon2">Favorites</button>
+    </div>
+</form>
+{% else %}
+{% endif %}
+
+
+<div class="container" id="recipe">
+  <div class="row g-2">
+    <div class="col-12">
+        <div class="p-3 border bg-light">
+            <div class="subm"><strong>Submitted: </strong>{{ recipe[0]["submitted"] }}</div>
+            <br>
+            {% if recipe[0]["user"]|int == session["user_id"] %}
+            <div class="login">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a id="nav" href="/edit/{{recipe[0]['id']}}">Edit</a></button>
+            </div>
+            {% else %}
+            {% endif %}
+            <br>
+            <div class="desc"><strong>Description: </strong>{{ recipe[0]["description"] }}</div>
+            <br>
+            <div class="ing"><strong>Ingredients:</strong> 
+            {% set ingredients = recipe[0]["ingredients"].replace("'","").replace("[","").replace("]","").split(",")%}
+                <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            <br>
+            <div class="steps"><strong>Steps: </strong>
+            {% set steps = recipe[0]["steps"].replace("'","").replace("[","").replace("]","").split(",")%}
+                <ol>
+                {% for step in steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+                </ol>
+            </div>
+            <br>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
